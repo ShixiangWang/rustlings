@@ -29,8 +29,9 @@ fn main() {
 
     println!("Population at generation {} is {}", generations, census(world));
     for _gens in 0..100 {
-        let temp = generation(world);
-        world = temp;
+        // let temp = generation(world);
+        // world = temp;
+        world = generation(world);
         generations += 1;
         println!("{}", clear::All);
         displayworld(world);
@@ -46,7 +47,7 @@ fn populate_from_file(filename: String) -> [[u8; 75]; 75]
     let file = File::open(filename).unwrap();
     let reader = BufReader::new(file);
     let mut pairs:  Vec<(usize, usize)> = Vec::new();
-    for (index, line) in reader.lines().enumerate() {
+    for (_index, line) in reader.lines().enumerate() {
         let l = line.unwrap();
         let mut words = l.split_whitespace();
         let left = words.next().unwrap();
@@ -54,11 +55,11 @@ fn populate_from_file(filename: String) -> [[u8; 75]; 75]
         pairs.push((left.parse::<usize>().unwrap(), right.parse::<usize>().unwrap()));
     }
 
-    for i in 0..74 {
-        for j in 0..74 {
-            newworld[i][j] = 0;
-        }
-    }
+    // for i in 0..74 {
+    //     for j in 0..74 {
+    //         newworld[i][j] = 0;
+    //     }
+    // }
 
     for (x,y) in pairs {
         newworld[x][y] = 1;
