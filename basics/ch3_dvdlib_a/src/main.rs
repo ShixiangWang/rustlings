@@ -9,6 +9,10 @@ struct Dvd {
     length: u16
 }
 
+// pub trait Encodable {
+//     fn encode<S: Encoder>(&self, s: &mut S) -> Result<(), S::Error>;
+// }
+
 impl ToJson for Dvd {
     fn to_json(&self) -> Json {
         Json::String(format!("{}+{}+{}+{}i", self.name, self.year, self.cast, self.length))

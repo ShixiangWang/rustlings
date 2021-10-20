@@ -1,13 +1,145 @@
-extern crate rand;
-use rand::Rng;
-
 fn main() {
-    let random_number = rand::thread_rng().gen_range(1, 11);
-    println!("Random number: {}", random_number);
 
-    let random_bool = rand::thread_rng().gen_weighted_bool(2);
-    println!("Random Boolean: {}", random_bool);
 }
+
+struct Rectangle {
+    width: u8,
+    height: u8
+}
+
+impl Rectangle {
+    fn is_square(&self) -> bool {
+        self.width == self.height
+    }
+}
+
+fn give_two() -> i16 {
+    2
+}
+
+#[cfg(test)]
+mod dcode_tests {
+    #[test]
+    #[should_panic]
+    fn test_basic() {
+        assert!(1 == 1);
+        panic!("Oh no!");
+    }
+
+    #[test]
+    fn test_equals() {
+        assert_eq!(super::give_two(), 1 + 1);
+        assert_ne!(2, 1 + 2);
+    }
+
+    #[test]
+    fn test_structs() {
+        let r = super::Rectangle {
+            width: 50,
+            height: 50
+        };
+
+        assert!(r.is_square())
+    }
+
+    #[test]
+    #[ignore]
+    fn test_equals2() {
+        assert_eq!(2, 1 + 1);
+        assert_ne!(2, 1 + 2);
+    }
+}
+
+
+// use std::process::Command;
+
+// fn main() {
+//     let mut cmd = Command::new("python3");
+//     cmd.arg("hello.py");
+
+
+//     // Execute
+//     match cmd.output() {
+//         Ok(o) => {
+//             unsafe {
+//                 println!("Output: {}", String::from_utf8_unchecked(o.stdout));
+//             }
+//         },
+//         Err(e) => {
+//             println!("There was an error! {}", e);
+//         }
+//     }
+// }
+
+
+// #![allow(dead_code)]
+
+// enum Day {
+//     Monday, Tuesday, Wednesday,
+//     Thursday, Friday, Saturday, Sunday
+// }
+
+
+// impl Day {
+//     fn is_weekday(&self) -> bool {
+//         match self {
+//             Day::Saturday | Day::Sunday => return false,
+//             _ => return true
+//         }
+//     }
+// }
+
+// fn main() {
+//     let d = Day::Tuesday;
+
+//     println!("Is d a weekday? {}", d.is_weekday());
+// }
+
+// fn main() {
+//     {
+//         let my_string = String::from("Rust is fantastic!");
+//         println!("After replace: {}", my_string.replace("fantastic", "great"));
+
+//     }
+
+//     {
+//         let my_string = String::from("The weather is\nnice\noutside mat!");
+
+//         for line in my_string.lines() {
+//             println!("[ {} ]", line);
+//         }
+//     }
+
+//     {
+//         let my_string = String::from("Leave+a+like+if+you+enjoyed!");
+//         let tokens: Vec<&str> = my_string.split("+").collect();
+
+//         println!("{}", my_string);
+//         println!("At index 2: {}", tokens[2]);
+
+//     }
+
+//     {
+//         let my_string = String::from("  My name is SX \n");
+//         println!("after trim: {}", my_string.trim());
+//         println!("{}", match my_string.chars().nth(8) {
+//             Some(c) => c,
+//             None => 'N'
+//         });
+//     }
+// }
+
+
+// extern crate rand;
+// use rand::Rng;
+
+// fn main() {
+//     let random_number = rand::thread_rng().gen_range(1, 11);
+//     println!("Random number: {}", random_number);
+
+//     let random_bool = rand::thread_rng().gen_weighted_bool(2);
+//     println!("Random Boolean: {}", random_bool);
+// }
 
 // use std::collections::HashMap;
 
