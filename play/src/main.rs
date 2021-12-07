@@ -1,54 +1,66 @@
 fn main() {
+    let x = 5;
+    let y = x;
+    // x和y在栈上分配内存以存储数据
+    println!("{} {}", x, y);
 
+    let s1 = String::from("hello"); // 字符串存储在“堆”上
+    //let s2 = s1; // s1 -> s2，发生浅拷贝，s1便不可用。mv operation
+    
+    // way1:
+    let s2 = &s1;
+    // way2
+    let s3 = s1.clone();
+    println!("{} {} {}", s1, s2, s3);
 }
 
-struct Rectangle {
-    width: u8,
-    height: u8
-}
+// struct Rectangle {
+//     width: u8,
+//     height: u8
+// }
 
-impl Rectangle {
-    fn is_square(&self) -> bool {
-        self.width == self.height
-    }
-}
+// impl Rectangle {
+//     fn is_square(&self) -> bool {
+//         self.width == self.height
+//     }
+// }
 
-fn give_two() -> i16 {
-    2
-}
+// fn give_two() -> i16 {
+//     2
+// }
 
-#[cfg(test)]
-mod dcode_tests {
-    #[test]
-    #[should_panic]
-    fn test_basic() {
-        assert!(1 == 1);
-        panic!("Oh no!");
-    }
+// #[cfg(test)]
+// mod dcode_tests {
+//     #[test]
+//     #[should_panic]
+//     fn test_basic() {
+//         assert!(1 == 1);
+//         panic!("Oh no!");
+//     }
 
-    #[test]
-    fn test_equals() {
-        assert_eq!(super::give_two(), 1 + 1);
-        assert_ne!(2, 1 + 2);
-    }
+//     #[test]
+//     fn test_equals() {
+//         assert_eq!(super::give_two(), 1 + 1);
+//         assert_ne!(2, 1 + 2);
+//     }
 
-    #[test]
-    fn test_structs() {
-        let r = super::Rectangle {
-            width: 50,
-            height: 50
-        };
+//     #[test]
+//     fn test_structs() {
+//         let r = super::Rectangle {
+//             width: 50,
+//             height: 50
+//         };
 
-        assert!(r.is_square())
-    }
+//         assert!(r.is_square())
+//     }
 
-    #[test]
-    #[ignore]
-    fn test_equals2() {
-        assert_eq!(2, 1 + 1);
-        assert_ne!(2, 1 + 2);
-    }
-}
+//     #[test]
+//     #[ignore]
+//     fn test_equals2() {
+//         assert_eq!(2, 1 + 1);
+//         assert_ne!(2, 1 + 2);
+//     }
+// }
 
 
 // use std::process::Command;
